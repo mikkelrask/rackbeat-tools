@@ -1,10 +1,12 @@
 import csv
 import requests
 import sys
+import os
+from dotenv import load_dotenv
 
-# Api key "August"
-BEARER_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYTI2YjI0ODZlOWE0YjVjNzZlMThiNWM1MzM4NjIwYzQ1NzI5MWNiNDNlOWE4MDQ5ZTc1ZjMxMjEzYjYwYzM2YjM5OGY1Mjg4ZTU4MzA1ZDYiLCJpYXQiOjE2ODcyODUwNDMuNDcxNDIzLCJuYmYiOjE2ODcyODUwNDMuNDcxNDI3LCJleHAiOjIwMDI5MDQyNDMuNDU0NDgxLCJzdWIiOiIxNTM1NSIsInNjb3BlcyI6W119.To_srQ0jlDVrV0ZoyHxOuF5reGcu2dOAAVQWlxGBxfLnTzEJYZJk6HspQ4jBdvdnsqFA8gj9cwNzyBkl_DQ0pabrnuqQt9ylUqsWqn4WhYeNJa1L0zpogLQazG-2AeCfljSjN7hBR-SZnjrV4fN9fpBn-7mjhGHNP82dfQ02EN07rYjfPcfB-dDN-1PAMXh088qRSrx92vqs8hHIf8BOsN9DCvaUN3Sd5AVYPjLZY5QfJOzE1xLPO9zJwiV_R4b9mf6EJl_yaiBDfD1vZ2u7_VgE_IbHv5HEn88wx4-zTSCqUGY7SXHt11T8BZwPexjbqp8N1xRajvgeKjWLdXlYN0lJYc9D0kk6TgiJ7gZqthxl1n76FgkNpAQM89sg5GC6VeWQyLDKuLqZxCEnVQgONfvrjZ7bmudhMZluyPndYkjBtOiYj3VOncxP2Ft5qsd22dT5RQOCxmBPW67eSDJ4uK5cbsBlqP2Jr6xrhBJWHtiyTlmcvCAWfUkGHFt4GRNj6jH_wnvPZ_pNxikBur8qkxZ1cqDW3uchbS86_p4rK5xvLmhS1QgaFGamB0t_tOvBMkiCLbpVb5caIE8nYs_1USXLwEzAF_E6WfSOw5A-XdEUWRmeKlKU1dCg-2l_8YfeZOJgecwmk6CHGmv1p0UHJlE8CUGGdS0esYu7l7YV9JE"
+load_dotenv()
 
+BEARER_TOKEN = os.getenv("BEARER_TOKEN")
 
 def create_product(row):
     url = "https://app.rackbeat.com/api/products/"
@@ -42,7 +44,7 @@ def create_product(row):
         "Content-Type": "application/json",
     }
     response = requests.post(url, headers=headers, json=payload)
-    if response.status_code == 20:
+    if response.status_code == 201:
         print("Successfully created product: " + row.get("number"))
         print("-----------------------------------")
     else:
@@ -57,7 +59,7 @@ if len(sys.argv) < 2:
     sys.exit(1)
 
 # Get the CSV file path from the command line argument
-csv_file = sys.argv[1]
+csv_file = os.getenv("IMPORT_FILE");
 
 # Define the required fields in the CSV
 required_fields = ["number", "group", "name", "sales_price", "unit_id"]
