@@ -7,8 +7,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 BEARER_TOKEN = os.getenv("BEARER_TOKEN")
+errors = 0
+successes = 0
 
 def create_product(row):
+    global errors, successes
     url = "https://app.rackbeat.com/api/products/"
     payload = {
         "number": row.get("number"),
@@ -47,16 +50,12 @@ def create_product(row):
     if response.status_code == 201:
         print("Successfully created product: " + row.get("number"))
         print("-----------------------------------")
+        successes = successes + 1
     else:
         print("Failed to create product: " + row.get("number"))
         print("Error message:", response.text)
         print("-----------------------------------")
-
-
-# Check if the CSV file path argument is provided
-if len(sys.argv) < 2:
-    print("Please provide the path to the CSV file as an argument.")
-    sys.exit(1)
+        errors = errors + 1
 
 # Get the CSV file path from the command line argument
 csv_file = os.getenv("IMPORT_FILE");
@@ -80,3 +79,10 @@ with open(csv_file, "r", newline="") as file:
         else:
             print("Skipping row: Missing required fields")
             print("-----------------------------------")
+print("")
+print("Import of product updates complete! Heres how it went: ")
+print("Total products updated: " + str(successes))
+print("Total products failed: " + str(errors))
+print("")
+
+print("Done! Good work August!")
