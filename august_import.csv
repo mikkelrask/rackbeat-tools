@@ -1,5 +1,5 @@
 number;group;name;suggested_cost_price;extra_cost;sales_price;unit_id;stock_quantity;description;min_inventory_quantity;min_sales_quantity;min_purchase_quantity;barcode;default_location_id;variation_id;weight;weight_unit;width;height;depth;size_unit;supplier_product_number;is_barred;discount_group;image_url;Har batchstyring;has_serial_numbers
-1215615;666;Samsung TV;2500;10;6000;1;;Stort og godt;20;10;10;;;;150;g;;12;5;mm;123123123;true;;;true;false
+1215615;1;Samsung TV;2500;10;6000;1;;Stort og godt;20;10;10;;;;150;g;;12;5;mm;123123123;true;;;true;false
 SBV-5108;1;iPhone;1499;20;3999;1;;Hurtig og smart;;;;;;;20;;;;2;kg;234242342;false;;;false;false
 51150;1;Hue;15;5;40;1;;lorem;;;10;;;;;kg;;;3;cm;2989873;1;;;false;false
 9991;1;Fragt;50;1;75;1;;"lkjq ";;;;12312312;;;;;30;;2;;34243897;0;;;false;false
