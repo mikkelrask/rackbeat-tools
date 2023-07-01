@@ -2,11 +2,41 @@
 
 A small collection of python scripts to perfom actions on a Rackbeat inventory.
 
-In its simple form, it's an easy way to perform automated tasks through the Rackbeat API.
+In its simple form, it's an easy way to perform automated tasks through the Rackbeat API.  
+Its intented for use on Windows, but the python scripts themselves should work regardless of OS.
+
+## Current tools
+
+- Create Product Groups
+- Create Unit Types
+- Import products
+- Import changes to existing product
+
+## Installing
+
+The toolbox scripts are made in Python, which is of course required.
+They also depend on different libraries to function as well, and everything can be installed like so:
+
+1. Open a Powershell terminal  
+   Click the start menu, and type Poweshell and hit enter
+1. Clone this Github repo locally with the command:  
+   `git clone https://github.com/mikkelrask/rackbeat-tools.git `
+1. Install requirements and dependencies with:  
+   `& .\install-toolbox-deps.ps1`
+
+This will install the latest verion of `python`, `pip` and the libraries `requests` and `python-dotenv`
+
+## Updating the toolbox
+
+When in your project folder, open a Terminal (i.e Right click, and click "Open in Terminal")
+
+Type `git pull` and hit `Enter`
+
+---
 
 ## Bearer token 🧸
 
-To use the utilities, you need to provide a valid API key as your `Bearer` token to make requests.
+To use the utilities, you need to provide a valid API key as your `Bearer` token to be able to make requests.
 
 This token acts as a password to ensure that you have the privilege to perform actions on the account.
 API keys are personal, and all actions performed with the utilities will be linked to the user who created it.
@@ -25,6 +55,8 @@ It should provide you with a [base64url encoded json](https://www.rfc-editor.org
 
 Please note that the API key will not be displayed again, so make sure to store it properly.
 
+---
+
 ## Environment variables
 
 To make sure that you don´t have to edit and save all utils with the correct Bearer token on each run, an environment file has been created, which all utilities then refers to, when looking for the API key.
@@ -40,18 +72,18 @@ BEARER_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYzRhO
 
 3. Save the file.
 
+---
+
 ## Import file
 
 For each customer, start out by creating a copy of the `import-template.csv` file. This file has custom named table headers, that the import/update scripts map with what the API endpoints expects. To prevent mishaps, when managing multiple Rackbeat accounts, sticking to a naming convention i.e like `{account}-{date}.csv`, could help minimize wrongful imports, but has no other function than that.
 
 1. Open the `.env` file again
-2. Put the import files local path in the `IMPORT_FILE` variable in the `.env` file. So if the import file was located in the same directory as eht `.env` file, it would look like this:
+2. Put the import files local path in the `IMPORT_FILE` variable in the `.env` file. So if the import file was located in the same directory as eht `.env` file, it would look like this:  
+   `IMPORT_FILE="./7235-24062023.csv"`
+3. Save the `.env` file.
 
-```json
-IMPORT_FILE="./7235-24062023.csv"
-```
-
-2. Save the `.env` file.
+---
 
 ## Create groups
 
@@ -64,6 +96,8 @@ With the Bearer token set in the `.env` file, often times the first thing youd w
 5. Set weather the products in this group has an inventory
 6. Set weather the products in this group are able to be sold (y/n)
 
+---
+
 ## Import Products
 
 With both the `.env` file populated, and and the `groups` created, we are ready to rock and/or roll!
@@ -71,6 +105,8 @@ With both the `.env` file populated, and and the `groups` created, we are ready 
 `python .\import-products.csv` will look in the `.env` file for the `BEARER_TOKEN`/api key and what file it needs to process.
 
 Note! This script iterates through each line of the csv file, creating the products one by one. This can potentially be a lot of calls, and is not at all effecient. But it does make sure we don´t hit any speed limits, just as it will still create what ever products it can from the import sheet, rather than to abort the complete import if theres was found an error on one or more of the lines in the product sheet. The lines that wasnt importable will be skipped, and an exlanation/error message will be output in the terminal window.
+
+---
 
 ## Update Products
 

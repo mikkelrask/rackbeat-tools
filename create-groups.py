@@ -39,11 +39,11 @@ def create_product_group(group_name, group_id, domestic_vat, vat_eu, vat_abroad,
         "number": group_id,
         "has_inventory": has_inventory == "y",
         "should_spread_cost": False,
-        "vat_domestic": vat_domestic_taxfree,
+        "vat_domestic": domestic_vat,
         "vat_eu": vat_eu,
         "vat_abroad": vat_abroad,
         "is_sellable": products_can_be_sold == "y",
-        "vat_domestic_exempt": domestic_vat
+        "vat_domestic_exempt": vat_domestic_taxfree
     }
 
     response = requests.post(url, headers=headers, json=payload)

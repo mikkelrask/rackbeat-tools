@@ -60,11 +60,6 @@ def create_product(row):
         errors = errors + 1
 
 
-# Check if the CSV file path argument is provided
-if len(sys.argv) < 2:
-    print("Please provide the path to the CSV file as an argument.")
-    sys.exit(1)
-
 # Get the CSV file path from the command line argument
 csv_file = os.getenv("IMPORT_FILE")
 
@@ -93,5 +88,3 @@ print("Import of product updates complete!")
 print("Total products updated: " + str(successes))
 print("Total products failed: " + str(errors))
 print("")
-
-print("Done! Good work August!")
