@@ -51,7 +51,7 @@ To generate an API key, follow these steps:
 After generating the API key, you will receive a base64url encoded JSON key, which should look like this:
 
 ![It should provide you a [base64url encoded json](https://www.rfc-editor.org/rfc/rfc7519#3.0) key like so](image.png)  
-It should provide you with a [base64url encoded json](https://www.rfc-editor.org/rfc/rfc7519#3.0) like this
+It should provide you with a [base64url encoded json](https://www.rfc-editor.org/rfc/rfc7519#3.0) like this (no worries, this isnt an active key)
 
 Please note that the API key will not be displayed again, so make sure to store it properly.
 
@@ -68,6 +68,7 @@ To use the API key in your Python project, follow these steps:
 
 ```json
 BEARER_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYzRhODIwNWRiNTJlMGU3NGVkODRhNjk0MjY4YWE4MDQ5MDQzNzY2MTFlNWQ5YmU3ZDVlMTY2NGQ2ZDgzMGQ2ODNiNzc5ZDA3MTgxZWE0NjIiLCJpYXQiOjE2ODc1OTc3MjAuMjc3MDMzLCJuYmYiOjE2ODc1OTc3MjAuMjc3MDM3LCJleHAiOjIwMDMyMTY5MjAuMjY1Mzk2LCJzdWIiOiIxNTM1NSIsInNjb3BlcyI6W119.DY_cZP-bpRZTGVOEAZwehmuSWsZVozSfW8QPeMZyVveeTvzB6TML9TkNRut_fYjiJ5uQvsN7MQcv7XjSiRnCT89Latx70Cq1qGqf6BtEVWwvMlO90nWwL7LBfCOwHADQMyRMsBEOpMKXfPiTSbY6CAYAEhn26BCfsi24Qh_1xSb-wMhqxaHkk2_9S9nh8KXlxpbDVCrpGMS04aUVcVudzVztSbjoIjNlsCPO8H8TD4VfqcV9zbKQy3IAe-1eUPTdilQaty2vbK-vl0qsSLvIT32SiY-fAtTu8Ya7_x5xZKG5Hpfw1ol1PBjHfrD2NH1xqLacCyGmynna7HAAFV5xNoNKhoP-tHvh1ZW0PnJP5iXHr9O0FYEidIqm0YSwqP7V43O1m1hkRnnvfEFxwZMwya8W81f1JbmDJSOUv2iKnbKAR4lUvmggpAB7S4OvRUWD5_V8uScyVynDO07CJKfwEhKttfKpAbAzQeHBCtYqa5HdpGpy4vRqfvm4rGeA2VNAEtz1uV4KT-Dw9dIwYMb20sGw2Vm-vNvx3-qNlJq2WJlTaCd5gnajN3TS8ZjATMrTdylbLXmj9cuJFf0N8nBL8C_IfkYGXgwWez_XrF6Wq43NFgeY69N1cFrX7K-b--9ZKUoZU5He0y7FrTraXKXfdOviu2Z7hSXDPejtJXhrhZI"
+(no worries, this isnt an active key)
 ```
 
 3. Save the file.
