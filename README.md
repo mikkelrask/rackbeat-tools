@@ -18,7 +18,7 @@ The toolbox scripts are made in Python, which is of course required.
 They also depend on different libraries to function as well. A install script has been provided in `install-toolbox-deps.ps1`, that will verify that `python`, `pip` and the nessecary python libraries are available. To run this, your user needs to have a `unrestricted` execution policy. If you are able to run scripts, you can skip step 2:
 
 1. Open a Powershell terminal  
-   Click the start menu, and type `Poweshell` and click the [`Run as administrator`](./img/administrator.png) option.
+   Click the start menu, and type `Poweshell` and click the [`Run as administrator`](./img/adminstrator.png) option.
 1. Set the Powershell execution restrictions as `unrestricted`*     
    Type `set-executionpolicy unrestricted` in the terminal and hit `Enter`
    Verify the action with `Y` when prompted
