@@ -6,7 +6,7 @@ if ($pythonInstalled -like "*Python*") {
 } else {
     # Install Python using winget
     Write-Output "Installing Python..."
-    winget install --name "Python"
+    winget install Python.Python.3.12
 }
 
 # Check if pip is already installed
