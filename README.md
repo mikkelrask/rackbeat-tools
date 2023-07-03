@@ -19,7 +19,7 @@ They also depend on different libraries to function as well. A install script ha
 
 1. Open a Powershell terminal  
    Click the start menu, and type `Poweshell` and click the [`Run as administrator`](./img/administrator.png) option.
-1. Set the Powershell execution restrictions as `unrestricted` *     
+1. Set the Powershell execution restrictions as `unrestricted`*     
    Type `set-executionpolicy unrestricted` in the terminal and hit `Enter`
    Verify the action with `Y` when prompted
 1. Make sure `git` is installed and can be executed     
@@ -33,8 +33,8 @@ They also depend on different libraries to function as well. A install script ha
 1. Install requirements and dependencies with:  
    `& .\install-toolbox-deps.ps1`
 
-This will install the latest verion of `python`, `pip` and the libraries `requests` and `python-dotenv`
-More information about the execution policy and options regarding that, can be found here: [https://windowsloop.com/enable-powershell-scripts-execution-windows-10](https://windowsloop.com/enable-powershell-scripts-execution-windows-10)
+This will install the latest verion of `python`, `pip` and the libraries `requests` and `python-dotenv`   
+*More information about the execution policy and options regarding that, can be found here: [https://windowsloop.com/enable-powershell-scripts-execution-windows-10](https://windowsloop.com/enable-powershell-scripts-execution-windows-10)
 
 ## Updating the toolbox 🛠️
 
