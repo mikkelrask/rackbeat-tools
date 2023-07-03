@@ -20,7 +20,7 @@ def create_unit(unit_id, unit_name):
     }
 
     payload = {
-        "id": unit_id,
+        "number": unit_id,
         "name": unit_name
     }
 
