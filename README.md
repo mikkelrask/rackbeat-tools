@@ -15,12 +15,16 @@ Its intented for use on Windows, but the python scripts themselves should work r
 ## Installing
 
 The toolbox scripts are made in Python, which is of course required.
-They also depend on different libraries to function as well, and everything can be installed like so:
+They also depend on different libraries to function as well. A install script has been provided in `install-toolbox-deps.ps1`, that will verify that `python`, `pip` and the nessecary python libraries are available. To run this, your user needs to have a `unrestricted` execution policy. If you are able to run scripts, you can skip step 2:
 
 1. Open a Powershell terminal  
-   Click the start menu, and type Poweshell and hit enter
+   Click the start menu, and type `Poweshell` and click the [`Run as administrator`](./img/adminstrator.png) option.
+1. Set the Powershell execution restrictions as `unrestricted` *  
+   Type `set-executionpolicy unrestricted` in the terminal and hit `Enter`
 1. Clone this Github repo locally with the command:  
-   `git clone https://github.com/mikkelrask/rackbeat-tools.git `
+   copy the following command `git clone https://github.com/mikkelrask/rackbeat-tools.git ` and paste it to the terminal
+1. Navigate into the local repo
+   type `cd rackbeat-tools` and press `Enter`   
 1. Install requirements and dependencies with:  
    `& .\install-toolbox-deps.ps1`
 
@@ -28,9 +32,10 @@ This will install the latest verion of `python`, `pip` and the libraries `reques
 
 ## Updating the toolbox
 
-When in your project folder, open a Terminal (i.e Right click, and click "Open in Terminal")
+When new tools are added, or current ones are updated, you can update your repo to get the latest changes. When in your project folder, open a Terminal (i.e Right click, and click "Open in Terminal")
 
-Type `git pull` and hit `Enter`
+Type `git pull` and hit `Enter`.
+Your local repo now has the latest changes.
 
 ---
 
@@ -68,7 +73,7 @@ To use the API key in your Python project, follow these steps:
 
 ```json
 BEARER_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYzRhODIwNWRiNTJlMGU3NGVkODRhNjk0MjY4YWE4MDQ5MDQzNzY2MTFlNWQ5YmU3ZDVlMTY2NGQ2ZDgzMGQ2ODNiNzc5ZDA3MTgxZWE0NjIiLCJpYXQiOjE2ODc1OTc3MjAuMjc3MDMzLCJuYmYiOjE2ODc1OTc3MjAuMjc3MDM3LCJleHAiOjIwMDMyMTY5MjAuMjY1Mzk2LCJzdWIiOiIxNTM1NSIsInNjb3BlcyI6W119.DY_cZP-bpRZTGVOEAZwehmuSWsZVozSfW8QPeMZyVveeTvzB6TML9TkNRut_fYjiJ5uQvsN7MQcv7XjSiRnCT89Latx70Cq1qGqf6BtEVWwvMlO90nWwL7LBfCOwHADQMyRMsBEOpMKXfPiTSbY6CAYAEhn26BCfsi24Qh_1xSb-wMhqxaHkk2_9S9nh8KXlxpbDVCrpGMS04aUVcVudzVztSbjoIjNlsCPO8H8TD4VfqcV9zbKQy3IAe-1eUPTdilQaty2vbK-vl0qsSLvIT32SiY-fAtTu8Ya7_x5xZKG5Hpfw1ol1PBjHfrD2NH1xqLacCyGmynna7HAAFV5xNoNKhoP-tHvh1ZW0PnJP5iXHr9O0FYEidIqm0YSwqP7V43O1m1hkRnnvfEFxwZMwya8W81f1JbmDJSOUv2iKnbKAR4lUvmggpAB7S4OvRUWD5_V8uScyVynDO07CJKfwEhKttfKpAbAzQeHBCtYqa5HdpGpy4vRqfvm4rGeA2VNAEtz1uV4KT-Dw9dIwYMb20sGw2Vm-vNvx3-qNlJq2WJlTaCd5gnajN3TS8ZjATMrTdylbLXmj9cuJFf0N8nBL8C_IfkYGXgwWez_XrF6Wq43NFgeY69N1cFrX7K-b--9ZKUoZU5He0y7FrTraXKXfdOviu2Z7hSXDPejtJXhrhZI"
-(no worries, this isnt an active key)
+(no worries, this is **not** an active key)
 ```
 
 3. Save the file.
@@ -85,6 +90,16 @@ For each customer, start out by creating a copy of the `import-template.csv` fil
 3. Save the `.env` file.
 
 ---
+
+## Use the Toolbox
+
+To run the toolbox, execute the RB-Toolbox script:   
+1. Open the Repo folder in your File Explorer
+2. Right click the folder and click `Open in Terminal`
+3. Type `python .\RB-Toolbox.py` and press `Enter`.
+4. Follow the instructions on the screen.
+
+Please always remember to verify the company and agreement number, shown in the top!
 
 ## Create groups
 
