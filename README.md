@@ -12,25 +12,36 @@ Its intented for use on Windows, but the python scripts themselves should work r
 - Import products
 - Import changes to existing product
 
-## Installing
+## Installing 🏴‍☠️
 
 The toolbox scripts are made in Python, which is of course required.
-They also depend on different libraries to function as well, and everything can be installed like so:
+They also depend on different libraries to function as well. A install script has been provided in `install-toolbox-deps.ps1`, that will verify that `python`, `pip` and the nessecary python libraries are available. To run this, your user needs to have a `unrestricted` execution policy. If you are able to run scripts, you can skip step 2:
 
 1. Open a Powershell terminal  
-   Click the start menu, and type Poweshell and hit enter
+   Click the start menu, and type `Poweshell` and click the [`Run as administrator`](./img/adminstrator.png) option.
+1. Set the Powershell execution restrictions as `unrestricted`*     
+   Type `set-executionpolicy unrestricted` in the terminal and hit `Enter`
+   Verify the action with `Y` when prompted
+1. Make sure `git` is installed and can be executed     
+   Type `winget install Git.Git`, hit `Enter`
+1. Restart the terminal    
+   Simply close it, and reopen it, like in step 1, and continue
 1. Clone this Github repo locally with the command:  
-   `git clone https://github.com/mikkelrask/rackbeat-tools.git `
+   copy the following command `git clone https://github.com/mikkelrask/rackbeat-tools.git ` and paste it to the terminal with `CTRL` + `Shift` + `V` followed by `Enter`
+1. Navigate into the local repo    
+   type `cd rackbeat-tools` and press `Enter`   
 1. Install requirements and dependencies with:  
    `& .\install-toolbox-deps.ps1`
 
-This will install the latest verion of `python`, `pip` and the libraries `requests` and `python-dotenv`
+This will install the latest verion of `python`, `pip` and the libraries `requests` and `python-dotenv`   
+*More information about the execution policy and options regarding that, can be found here: [https://windowsloop.com/enable-powershell-scripts-execution-windows-10](https://windowsloop.com/enable-powershell-scripts-execution-windows-10)
 
-## Updating the toolbox
+## Updating the toolbox 🛠️
 
-When in your project folder, open a Terminal (i.e Right click, and click "Open in Terminal")
+When new tools are added, or current ones are updated, you can update your repo to get the latest changes. When in your project folder, open a Terminal (i.e Right click, and click "Open in Terminal")
 
-Type `git pull` and hit `Enter`
+Type `git pull` and hit `Enter`.
+Your local repo is now updated with the latest changes.
 
 ---
 
@@ -51,7 +62,7 @@ To generate an API key, follow these steps:
 After generating the API key, you will receive a base64url encoded JSON key, which should look like this:
 
 ![It should provide you a [base64url encoded json](https://www.rfc-editor.org/rfc/rfc7519#3.0) key like so](image.png)  
-It should provide you with a [base64url encoded json](https://www.rfc-editor.org/rfc/rfc7519#3.0) like this
+It should provide you with a [base64url encoded json](https://www.rfc-editor.org/rfc/rfc7519#3.0) like this (no worries, this isnt an active key)
 
 Please note that the API key will not be displayed again, so make sure to store it properly.
 
@@ -68,13 +79,14 @@ To use the API key in your Python project, follow these steps:
 
 ```json
 BEARER_TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiYzRhODIwNWRiNTJlMGU3NGVkODRhNjk0MjY4YWE4MDQ5MDQzNzY2MTFlNWQ5YmU3ZDVlMTY2NGQ2ZDgzMGQ2ODNiNzc5ZDA3MTgxZWE0NjIiLCJpYXQiOjE2ODc1OTc3MjAuMjc3MDMzLCJuYmYiOjE2ODc1OTc3MjAuMjc3MDM3LCJleHAiOjIwMDMyMTY5MjAuMjY1Mzk2LCJzdWIiOiIxNTM1NSIsInNjb3BlcyI6W119.DY_cZP-bpRZTGVOEAZwehmuSWsZVozSfW8QPeMZyVveeTvzB6TML9TkNRut_fYjiJ5uQvsN7MQcv7XjSiRnCT89Latx70Cq1qGqf6BtEVWwvMlO90nWwL7LBfCOwHADQMyRMsBEOpMKXfPiTSbY6CAYAEhn26BCfsi24Qh_1xSb-wMhqxaHkk2_9S9nh8KXlxpbDVCrpGMS04aUVcVudzVztSbjoIjNlsCPO8H8TD4VfqcV9zbKQy3IAe-1eUPTdilQaty2vbK-vl0qsSLvIT32SiY-fAtTu8Ya7_x5xZKG5Hpfw1ol1PBjHfrD2NH1xqLacCyGmynna7HAAFV5xNoNKhoP-tHvh1ZW0PnJP5iXHr9O0FYEidIqm0YSwqP7V43O1m1hkRnnvfEFxwZMwya8W81f1JbmDJSOUv2iKnbKAR4lUvmggpAB7S4OvRUWD5_V8uScyVynDO07CJKfwEhKttfKpAbAzQeHBCtYqa5HdpGpy4vRqfvm4rGeA2VNAEtz1uV4KT-Dw9dIwYMb20sGw2Vm-vNvx3-qNlJq2WJlTaCd5gnajN3TS8ZjATMrTdylbLXmj9cuJFf0N8nBL8C_IfkYGXgwWez_XrF6Wq43NFgeY69N1cFrX7K-b--9ZKUoZU5He0y7FrTraXKXfdOviu2Z7hSXDPejtJXhrhZI"
+(no worries, this is **not** an active key)
 ```
 
 3. Save the file.
 
 ---
 
-## Import file
+## Import file 📄
 
 For each customer, start out by creating a copy of the `import-template.csv` file. This file has custom named table headers, that the import/update scripts map with what the API endpoints expects. To prevent mishaps, when managing multiple Rackbeat accounts, sticking to a naming convention i.e like `{account}-{date}.csv`, could help minimize wrongful imports, but has no other function than that.
 
@@ -85,7 +97,18 @@ For each customer, start out by creating a copy of the `import-template.csv` fil
 
 ---
 
-## Create groups
+## Use the Toolbox
+
+To run the toolbox, execute the RB-Toolbox script:   
+1. Open the Repo folder in your File Explorer
+2. Right click the folder and click `Open in Terminal`
+3. Type `python .\RB-Toolbox.py` and press `Enter`.
+4. Follow the instructions on the screen.
+
+Please always remember to verify the company and agreement number, shown in the top!
+Each functionality can be executed individually without the "Toolbox Menu". See below options
+
+### Create groups
 
 With the Bearer token set in the `.env` file, often times the first thing youd want to do is to quickly create some item/product groups.
 
@@ -98,9 +121,19 @@ With the Bearer token set in the `.env` file, often times the first thing youd w
 
 ---
 
-## Import Products
+### Create Unit types
 
-With both the `.env` file populated, and and the `groups` created, we are ready to rock and/or roll!
+1. Execute `python .\create-unit-types.py` in a terminal emulator.
+2. Fill out `Unit ID: ` when prompted
+3. Fill out `Unit Name:` when prompted
+
+Your unit type is now created.
+
+---
+
+### Import Products
+
+With both the `.env` file populated, and and the `groups` and unit types created, we are ready to **rock and/_or_ roll**!
 
 `python .\import-products.csv` will look in the `.env` file for the `BEARER_TOKEN`/api key and what file it needs to process.
 
@@ -108,7 +141,7 @@ Note! This script iterates through each line of the csv file, creating the produ
 
 ---
 
-## Update Products
+### Update Products
 
 When products have been populated to your Rackbeat inventory, sometimes minor changes are needed. Make multiple of those, by importing product updates.
 
