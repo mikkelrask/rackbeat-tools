@@ -64,7 +64,7 @@ def create_product(row):
 csv_file = os.getenv("IMPORT_FILE")
 
 # Define the required fields in the CSV
-required_fields = ["number", "group", "name", "sales_price", "unit_id"]
+required_fields = ["number", "group", "name", "sales_price"]
 
 # Iterate through the CSV file
 with open(csv_file, "r", newline="") as file:
@@ -76,15 +76,14 @@ with open(csv_file, "r", newline="") as file:
             and row.get("group")
             and row.get("name")
             and row.get("sales_price")
-            and row.get("unit_id")
         ):
             create_product(row)
         else:
-            print("Skipping row: Missing required fields")
+            print("Skipping row: Missing required fields (number, group, name, sales_price)")
             print("-----------------------------------")
 
 print("")
-print("Import of product updates complete!")
+print("Update of product updates complete!")
 print("Total products updated: " + str(successes))
 print("Total products failed: " + str(errors))
 print("")

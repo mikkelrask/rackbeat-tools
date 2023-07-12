@@ -30,20 +30,8 @@ def fetch_company_info():
 
 def show_menu(company_name, account_number):
     global BEARER_TOKEN
-    print("================================================================================")
-    print('    ___       ___       ___       ___       ___       ___       ___       ___   ')
-    print('   /\  \     /\  \     /\  \     /\__\     /\  \     /\  \     /\  \     /\  \  ')
-    print('  /::\  \   /::\  \   /::\  \   /:/ _/_   /::\  \   /::\  \   /::\  \    \:\  \ ')
-    print(' /::\:\__\ /::\:\__\ /:/\:\__\ /::-"\__\ /::\:\__\ /::\:\__\ /::\:\__\   /::\__\ ')
-    print(' \;:::/  / \/\::/  / \:\ \/__/ \;:;-",-" \:\::/  / \:\:\/  / \/\::/  /  /:/\/__/')
-    print('  |:\/__/___ /:/  /___\:\__\ ___|:|  | ___\::/  /___\:\/  /___ /:/  /___\/__/   ')
-    print('   \|__|/\  \\/__//\  \\/__//\  \\|__|/\__\\/__//\  \\/__//\  \\/__//\__\       ')
-    print('        \:\  \   /::\  \   /::\  \   /:/  /    /::\  \   /::\  \   |::L__L      ')
-    print('        /::\__\ /:/\:\__\ /:/\:\__\ /:/__/    /::\:\__\ /:/\:\__\ /::::\__\     ')
-    print('       /:/\/__/ \:\/:/  / \:\/:/  / \:\  \    \:\::/  / \:\/:/  / \;::;/__/     ')
-    print('       \/__/     \::/  /   \::/  /   \:\__\    \::/  /   \::/  /   |::|__|      ')
-    print('                  \/__/     \/__/     \/__/     \/__/     \/__/     \/__/       ')
-    print("================================================================================")
+    print("RACKBEAT TOOLBOX - Easily create and update products in Rackbeat")
+    print("")
     print(f"Company: {company_name} ({account_number})")
     print("")
     print("Please choose an option:\n")
@@ -55,11 +43,11 @@ def show_menu(company_name, account_number):
     print("q. Quit\n")
 
 def run_create_groups():
-    print("Importing products...")
+    print("GROUPS:")
     os.system("python create-groups.py")
 
 def run_create_unit_types():
-    print("Running create-unit-types.py...")
+    print("UNITS:")
     os.system("python create-unit-types.py")
 
 def run_import_products():
@@ -67,16 +55,18 @@ def run_import_products():
     print("You are about to import products using the following CSV file: " + IMPORT_FILE)
     confirmation = input("Do you want to continue? (y/n): ")
     if confirmation.lower() == 'y':
-        os.system("python create-products.py")
+        os.system("python import-products.py")
+        time.sleep(3)
     else:
         print("Update canceled.")
 
 def run_update_products():
     global IMPORT_FILE
-    print("You are about to update products using the following CSV file: " + IMPORT_FILE)
+    print("You are about to update all products using the following CSV file: " + IMPORT_FILE)
     confirmation = input("Do you want to continue? (y/n): ")
     if confirmation.lower() == 'y':
         os.system("python update-products.py")
+        time.sleep(3)
     else:
         print("Update canceled.")
 

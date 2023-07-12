@@ -6,8 +6,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def gather_user_input():
-    unit_id = input("Unit ID: ")
     unit_name = input("Unit name: ")
+    unit_id = input("Unit number: ")
     return unit_id, unit_name
 
 def create_unit(unit_id, unit_name):

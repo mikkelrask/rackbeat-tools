@@ -7,7 +7,7 @@ load_dotenv()
 
 def gather_user_input():
     group_name = input("Group name: ")
-    group_id = input("Group id: ")
+    group_id = input("Group number: ")
     domestic_vat = input("Domestic VAT: ")
     vat_eu = input("VAT EU: ")
     vat_abroad = input("VAT Abroad: ")
