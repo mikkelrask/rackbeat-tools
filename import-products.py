@@ -41,6 +41,7 @@ def create_product(row):
         "is_barred": row.get("is_barred"),
         "discount_group": row.get("discount_group"),
         "image_url": row.get("image_url"),
+        "default_supplier_id": row.get("default_supplier_id")
     }
     headers = {
         "Authorization": "Bearer " + BEARER_TOKEN,
