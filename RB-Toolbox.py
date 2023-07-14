@@ -38,7 +38,8 @@ def show_menu(company_name, account_number):
     print("  1. Create Product Groups")
     print("  2. Create Unit Types")
     print("  3. Import products")
-    print("  4. Update products\n")
+    print("  4. Update products")
+    print("  5. Convert products to BOM")
 
     print("q. Quit\n")
 
@@ -70,6 +71,11 @@ def run_update_products():
     else:
         print("Update canceled.")
 
+def run_product_conversion():
+    global IMPORT_FILE
+    print("Convert product to BOM")
+    os.system("python create-product-convert.py")
+
 
 def getch():
     # Read a single character from the user input
@@ -98,6 +104,8 @@ while True:
         run_import_products()
     elif choice == '4':
         run_update_products()
+    elif choice == '5':
+        run_product_conversion()
     elif choice == 'q':
         break
     else:

@@ -2,6 +2,7 @@ import csv
 import requests
 import sys
 import os
+import time
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -59,7 +60,7 @@ def create_product(row):
         errors = errors + 1
 
 # Get the CSV file path from the command line argument
-csv_file = os.getenv("IMPORT_FILE");
+csv_file = os.getenv("IMPORT_FILE")
 
 # Define the required fields in the CSV
 required_fields = ["number", "group", "name", "sales_price"]
@@ -69,18 +70,15 @@ with open(csv_file, "r", newline="") as file:
     csv_reader = csv.DictReader(file, delimiter=";")
     for row in csv_reader:
         # Check if the essential fields have non-empty values
-        if (
-            row.get("number")
-            and row.get("group")
-            and row.get("name")
-            and row.get("sales_price")
-        ):
+        if all(row.get(field) for field in required_fields):
             create_product(row)
+            time.sleep(0.125)  # Pause for 0.125 seconds (1/8th of a second) between requests
         else:
-            print("Skipping row: Missing required fields (number, group, name, sales_price)")
+            print("Skipping row: Missing 1 or more required fields (number, group, name, sales_price)")
             print("-----------------------------------")
+
 print("")
-print("Import of product complete! Heres how it went: ")
+print("Import of product complete! Here's how it went:")
 print("Total products imported: " + str(successes))
 print("Total products failed: " + str(errors))
-print("")   
+print("")

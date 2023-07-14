@@ -10,10 +10,19 @@ BEARER_TOKEN = os.getenv("BEARER_TOKEN")
 
 errors = 0
 successes = 0
+failers = []
 
+
+# Save results as log file
+def log_results():
+    global errors, successes, failers
+    with open("update-products-log.txt", "w") as f:
+        f.write("Errors: " + str(errors) + "\n")
+        f.write("Successes: " + str(successes) + "\n")
+        f.write("Failers: " + str(failers) + "\n")
 
 def create_product(row):
-    global errors, successes
+    global errors, successes, failers
     url = "https://app.rackbeat.com/api/products/" + row.get("number")
     payload = {
         "number": row.get("number"),
@@ -58,13 +67,14 @@ def create_product(row):
         print("Error message:", response.text)
         print("-----------------------")
         errors = errors + 1
+        failers.append(row.get("number"))
 
 
 # Get the CSV file path from the command line argument
 csv_file = os.getenv("IMPORT_FILE")
 
 # Define the required fields in the CSV
-required_fields = ["number", "group", "name", "sales_price"]
+required_fields = ["number"]
 
 # Iterate through the CSV file
 with open(csv_file, "r", newline="") as file:
@@ -73,17 +83,15 @@ with open(csv_file, "r", newline="") as file:
         # Check if the essential fields have non-empty values
         if (
             row.get("number")
-            and row.get("group")
-            and row.get("name")
-            and row.get("sales_price")
         ):
             create_product(row)
         else:
-            print("Skipping row: Missing required fields (number, group, name, sales_price)")
+            print("Skipping row: Number is required")
             print("-----------------------------------")
 
 print("")
 print("Update of product updates complete!")
 print("Total products updated: " + str(successes))
 print("Total products failed: " + str(errors))
+print("Failed products: " + str(failers))
 print("")
