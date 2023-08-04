@@ -50,8 +50,6 @@ BOMS = [
     "W302", "W303", "W304", "W305", "W306", "W307", "W308", "W309", "W313", "W314"
 ]
 
-  # Replace with your actual array values
-
 # API endpoint URL
 url = "https://app.rackbeat.com/api/products/{}/convert"
 
