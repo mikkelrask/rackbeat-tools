@@ -144,6 +144,12 @@ def create_supplier(company_name):
 def create_purchase_draft(supplier_id):
     print("Creating purchase draft...")
     global errors
+    url = baseurl + "/purchase-orders/drafts"
+    payload = {
+        'supplier_id': supplier_id,
+        'heading': 'Test PO',
+        'book': 'false'
+    }
 
 def create_purchase(supplier_id, product_id, lot_id):
     global errors
@@ -189,4 +195,4 @@ if __name__ == '__main__':
         create_textarea(i)
         create_dropdown(i)
     create_supplier("Test Supplier")
-    create_purchase(supplier_id, product_id, lot_id)
+    create_purchase_draft(supplier_id)

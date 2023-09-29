@@ -2,6 +2,7 @@ import csv
 import requests
 import sys
 import os
+import time
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -16,17 +17,17 @@ failers = []
 # Save results as log file
 def log_results():
     global errors, successes, failers
-    with open("update-products-log.txt", "w") as f:
+    with open("update-products-default_location_id.pyls", "w") as f:
         f.write("Errors: " + str(errors) + "\n")
         f.write("Successes: " + str(successes) + "\n")
         f.write("Failers: " + str(failers) + "\n")
 
-def create_product(row):
+def update_product(row):
     global errors, successes, failers
     url = "https://app.rackbeat.com/api/products/" + row.get("number")
     payload = {
         "number": row.get("number"),
-        "default_location_id": row.get("default_location_id")
+        "department_id": row.get("default_location_id")
     }
     headers = {
         "Authorization": "Bearer " + BEARER_TOKEN,
@@ -49,7 +50,7 @@ def create_product(row):
 csv_file = os.getenv("IMPORT_FILE")
 
 # Define the required fields in the CSV
-required_fields = ["number"]
+required_fields = ["number", "department_id"]
 
 # Iterate through the CSV file
 with open(csv_file, "r", newline="") as file:
@@ -59,7 +60,8 @@ with open(csv_file, "r", newline="") as file:
         if (
             row.get("number")
         ):
-            create_product(row)
+            update_product(row)
+            time.sleep(0.125)  # Pause for 0.125 seconds (1/8th of a second) between requests
         else:
             print("Skipping row: Number is required")
             print("-----------------------------------")
