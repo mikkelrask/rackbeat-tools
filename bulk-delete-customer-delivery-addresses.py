@@ -50,14 +50,13 @@ def getAddresses(number):
         "Content-Type": "application/json",
         "Accept": "application/json",
     }
-    print("Getting addresses for: " + number)
+    print("Getting all addresses for: " + number)
     response = requests.get(url, headers=headers)
 
     if response.status_code == 206:
         response_data = response.json()
         if response_data["total"] > 0:
             for address in response_data["addresses"]:
-                # check if type is delivery
                 if address["type"] != "delivery":
                     print(
                         "Deleting delivery address "
