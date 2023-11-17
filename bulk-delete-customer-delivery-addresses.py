@@ -67,7 +67,7 @@ def getAddresses(number):
                     deleteAddress(number, address["id"])
                     success = success + 1
                 else:
-                    print(address["id"] + " is not a delivery address - skipping")
+                    print(str(address["id"]) + " is not a delivery address - skipping")
                     print("-----------------------")
                     noaction = noaction + 1
         else:
