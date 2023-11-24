@@ -57,7 +57,7 @@ def getAddresses(number):
         response_data = response.json()
         if response_data["total"] > 0:
             for address in response_data["addresses"]:
-                if address["type"] != "delivery":
+                if address["type"] == "delivery":
                     print(
                         "Deleting delivery address "
                         + str(address["id"])
@@ -67,7 +67,7 @@ def getAddresses(number):
                     deleteAddress(number, address["id"])
                     success = success + 1
                 else:
-                    print(address["id"] + " is not a delivery address - skipping")
+                    print(str(address["id"]) + " is not a delivery address - skipping")
                     print("-----------------------")
                     noaction = noaction + 1
         else:
