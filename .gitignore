@@ -1,4 +1,7 @@
-./.env
+
 Lib/
 Scripts/
 *.csv
+*.log
+*.pyc
+*env
