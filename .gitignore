@@ -1,4 +1,4 @@
-.env
+./.env
 Lib/
 Scripts/
 *.csv
