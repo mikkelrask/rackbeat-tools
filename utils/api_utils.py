@@ -37,6 +37,18 @@ def send_request(endpoint, method='GET', data=None):
 
     return response
 
+def delete_request(endpoint):
+    global err, success
+    url = BASE_URL + endpoint
+    response = requests.delete(url, headers=headers)
+
+    if response.status_code in range(200, 299):
+        success += 1
+    else:
+        err += 1
+
+    return response
+
 def process_csv(process_function):
     with open(FILE_PATH, 'r') as file:
         reader = csv.reader(file)
