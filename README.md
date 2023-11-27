@@ -11,6 +11,19 @@ Its intented for use on Windows, but the python scripts themselves should work r
 - Create Unit Types
 - Import products
 - Import changes to existing product
+- Create credit note from invoice no.
+- Convert a product to a LOT/Bill Of Material
+- Unbook a booked invoice
+- Update products (like the "Update existing" option from the UI)
+- Update specific product information:
+- - Default department ID (only e-conomic customer has this field)
+  - Product Group
+  - Sales Price
+  - Supplier Product Number
+- Bulk delete:
+  - Contacts in E-conomic (requires additional e-conomic API key!)
+  - Customer delivery addresses
+  - Unit types 
 
 ## Installing 🏴‍☠️
 
