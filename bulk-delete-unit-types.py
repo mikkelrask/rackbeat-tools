@@ -1,7 +1,7 @@
-from utils.api_utils import send_request, delete_request
+from utils.api_utils import send_request, delete_request, print_results
 import requests
 
-min_unit_id = 12
+min_unit_id = 12 # This line here
 
 
 def list_unit_types():
@@ -30,6 +30,16 @@ def deleteUnitID(id):
         print("Status Code:", response.status_code)
         print("Response:", response.text)
 
+def getPageCount():
+    endpoint = "units"
+    try:
+        response = send_request(endpoint, 'GET')
+        return response.json()['page_count']
+    except requests.HTTPError:
+        print("Failed to get page count.")
+        print("Status Code:", response.status_code)
+        print("Response:", response.text)
+
 if __name__ == "__main__":
     iterations = 0
     max_iterations = 70
@@ -38,3 +48,4 @@ if __name__ == "__main__":
             list_unit_types()
             iterations += 1
             print("Page " + str(iterations))
+    print_results()
