@@ -20,7 +20,7 @@ success = 0
 
 BASE_URL = "https://app.rackbeat.com/api/"
 
-def send_request(endpoint, method='GET', data=None):
+def send_request(endpoint, method='GET', headers='headers', data=None):
     global err, success
     url = BASE_URL + endpoint
     if method == 'POST':
@@ -50,8 +50,8 @@ def delete_request(endpoint):
     return response
 
 def process_csv(process_function):
-    with open(FILE_PATH, 'r') as file:
-        reader = csv.reader(file)
+    with open(FILE_PATH, 'r', encoding='utf-8') as file:
+        reader = csv.reader(file, delimiter=';')
         for row in reader:
             process_function(row)
 
