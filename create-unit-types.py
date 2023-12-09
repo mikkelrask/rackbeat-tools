@@ -1,9 +1,5 @@
-import requests
-import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
+# create_unit_types.py
+from utils.api_utils import send_request
 
 def gather_user_input():
     unit_name = input("Unit name: ")
@@ -11,24 +7,15 @@ def gather_user_input():
     return unit_id, unit_name
 
 def create_unit(unit_id, unit_name):
-    url = "https://app.rackbeat.com/api/units"
-
-    headers = {
-        "Accept": "application/json",
-        "Authorization": f"Bearer {os.getenv('BEARER_TOKEN')}",
-        "Content-Type": "application/json"
-    }
-
+    endpoint = "units"
     payload = {
         "number": unit_id,
         "name": unit_name
     }
-
-    response = requests.post(url, headers=headers, json=payload)
-
-    if response.status_code == 201:
+    try:
+        response = send_request(endpoint, 'POST', payload)
         print("Unit created successfully.")
-    else:
+    except requests.HTTPError:
         print("Failed to create unit.")
         print("Status Code:", response.status_code)
         print("Response:", response.text)
