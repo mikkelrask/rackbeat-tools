@@ -5,3 +5,7 @@ Scripts/
 *.log
 *.pyc
 *env
+.env
+pips.txt
+pyvenv.cfg
+order-response.json
