@@ -6,7 +6,6 @@ def check_if_barred(row):
 
     if response.status_code == 200:
         product = response.json()
-        print(product['product']['is_barred'])
         if product['product']['is_barred'] == True:
             print(f"Product {row[0]} is barred - deleting")
             delete_request(endpoint)
