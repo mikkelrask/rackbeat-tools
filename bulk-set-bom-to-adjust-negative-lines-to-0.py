@@ -51,8 +51,10 @@ def set_adjust_negative_lines_to_0():
                 continue
             else:
                 response = send_request(endpoint, 'PUT', headers=headers, data=data)
+
+            width = 78  # adjust this to the width of your console
             if response.status_code in range(200, 299):
-                print(f'{number} ✅')
+                print("{:<20} {:>20}".format(number, "✅"))
             else:
                 print(f'Error updating BOM {number} - {response.status_code} ❌')
                 print(response.status_code, response.text)
