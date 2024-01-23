@@ -20,8 +20,14 @@ success = 0
 
 BASE_URL = "https://app.rackbeat.com/api/"
 
-def send_request(endpoint, method='GET', headers='headers', data=None):
-    global err, success
+def send_request(endpoint, method='GET', headers=None, data=None):
+    global err, success, BEARER_TOKEN, FILE_PATH
+    if headers==None:
+        headers = {
+            'Authorization': f'Bearer {BEARER_TOKEN}',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
     url = BASE_URL + endpoint
     if method == 'POST':
         response = requests.post(url, headers=headers, json=data)
@@ -38,7 +44,7 @@ def send_request(endpoint, method='GET', headers='headers', data=None):
     return response
 
 def delete_request(endpoint):
-    global err, success
+    global err, success, headers
     url = BASE_URL + endpoint
     response = requests.delete(url, headers=headers)
 

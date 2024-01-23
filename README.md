@@ -20,6 +20,7 @@ Its intented for use on Windows, but the python scripts themselves should work r
   - Product Group
   - Sales Price
   - Supplier Product Number
+  - Set "Adjust negative quantity to 0" for all BOMs/Lots (BULK)
 - Bulk delete:
   - Contacts in E-conomic (requires additional e-conomic API key!)
   - Customer delivery addresses
