@@ -55,7 +55,8 @@ def delete_request(endpoint):
 
     return response
 
-def process_csv(process_function):
+def process_csv(process_function: callable):
+    global FILE_PATH
     with open(FILE_PATH, 'r', encoding='utf-8') as file:
         reader = csv.reader(file, delimiter=';')
         for row in reader:
