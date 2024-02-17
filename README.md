@@ -15,6 +15,11 @@ Its intented for use on Windows, but the python scripts themselves should work r
 - Convert a product to a LOT/Bill Of Material
 - Unbook a booked invoice
 - Update products (like the "Update existing" option from the UI)
+- Update customer:
+    - Add discount groups
+- Migrate un-importable data like:
+  - Customer contacts 
+  - Customer delivery addresses
 - Update specific product information:
 - - Default department ID (only e-conomic customer has this field)
   - Product Group
